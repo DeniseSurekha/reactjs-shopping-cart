@@ -34,6 +34,18 @@ class Main extends React.Component {
       mobileSearch: true
     });
   }
+  handleSearchNav(e) {
+    e.preventDefault();
+    this.setState(
+      {
+        mobileSearch: false
+      },
+    
+    );
+   
+      
+      
+  }
   addToCart = item => {
     var found = false;
     var updatedCart = this.state.cart.map(cartItem => {
@@ -130,7 +142,7 @@ class Main extends React.Component {
     }
 
     return (
-      <div>
+       <div className="container">
         <header style={{ position: "fixed" }}>
           <div className="container">
           <div className="brand">
@@ -156,6 +168,16 @@ class Main extends React.Component {
                   this.state.mobileSearch ? "search-form active" : "search-form"
                 }
               >
+                  <a
+                className="back-button"
+                href="#"
+                onClick={this.handleSearchNav.bind(this)}
+              >
+                <img
+                  src="https://res.cloudinary.com/sivadass/image/upload/v1494756030/icons/back.png"
+                  alt="back"
+                />
+              </a>
                 <input
                   type="search"
                   value={this.state.searchString}
@@ -181,7 +203,7 @@ class Main extends React.Component {
               closable={false}
               onClose={this.onClose}
               visible={this.state.visible}
-              width={500}
+              width={350}
             >
               {this.state.nocart ? (
                 <table>
@@ -253,7 +275,7 @@ class Main extends React.Component {
             className="products"
           >
             {_users.map(item => (
-              <div className="container">
+              <div >
                 <div className="product">
                   <div className="product-image">
                     <img src={item.image} />
